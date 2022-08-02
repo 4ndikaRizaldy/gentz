@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-big {
+    max-width: 73rem; /* 1168px */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container-medium {
+    max-width: 60.5rem; /* 968px */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container-small {
+    max-width: 35.5rem; /* 568px */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 767px) {
+    #product-swiper {
+        border-radius: 16px;
+    }
+}
+#banner-swiper .swiper-slide-active .active-child {
+    @apply h-full;
+}
+
+@media screen and (min-width: 1023px) {
+    #category-swiper .swiper-slide {
+        width: min-content !important;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .banner-login {
+        display: none;
+    }
+    .link-login,
+    .link-register {
+        position: absolute;
+        transform: translate(-50%);
+        bottom: 1.5rem;
+        left: 50%;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .menu-list{
+        display: none;
+    }
+    .container-banner {
+        max-width: 73rem; /* 1168px */
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bg-gradientLimegreen {
+        background: linear-gradient(
+            180deg,
+            #ffe9c9 59.55%,
+            rgba(255, 233, 202, 0) 100%
+        );
+    }
+    #button-swiper .swiper-slide {
+        width: max-content !important;
+    }
+}
+
+.left-back-button {
+    left: calc((100vw - 90vw) / 2);
+}
+
+#product-swiper-mobile .swiper-pagination {
+    bottom: 60px !important;
+}
+#product-swiper-mobile .swiper-pagination-bullet-active,
+#product-swiper .swiper-pagination-bullet-active {
+    background: #7126b5 !important;
+}
+#product-swiper-mobile .swiper-pagination-bullet,
+#product-swiper .swiper-pagination-bullet {
+    background: #c4c4c4;
+    border: 1px solid #7126b5 !important;
+    opacity: 1;
+}
+
+.swiper-lazy-preloader {
+    border-bottom: 4px solid #7126b5 !important;
+    border-left: 4px solid #7126b5 !important;
+    border-right: 4px solid #7126b5 !important;
+}
+/* ======== START ::: BUAT CUSTOM TOAST ======== */
+@media only screen and (max-width: 768px) {
+    .Toastify__toast-container--top-center {
+        transform: translateX(-50%) !important;
+        top: 54px !important;
+        margin-bottom: 1rem !important;
+    }
+    .Toastify__toast-container {
+        left: 50% !important;
+    }
+    .Toastify__toast {
+        margin-bottom: 1rem !important;
+    }
+}
+.Toastify__toast-container--top-center {
+    top: 100px !important;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+    background-color: #73ca5c !important;
+}
+.Toastify__toast-theme--colored.Toastify__toast--error {
+    background-color: #fa2c5a !important;
+}
+.Toastify__toast-container {
+    max-width: 73rem !important; /* 1168px */
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.Toastify__toast {
+    font-family: "Poppins", sans-serif !important;
+    align-items: center !important;
+    border-radius: 16px !important;
+    padding: 8px 24px !important;
+    max-width: 32.25rem !important; /* 500px */
+    width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px !important;
+    min-height: auto !important;
+    font-weight: 500 !important;
+}
+.Toastify__toast-icon {
+    display: none !important;
+}
+.Toastify__close-button {
+    align-self: auto !important;
+}
+/* ======== END ::: BUAT CUSTOM TOAST ======== */
+input[type="radio"]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%237126B5%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%275%27/%3e%3c/svg%3e") !important;
+}

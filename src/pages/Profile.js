@@ -299,7 +299,7 @@ const Profile = () => {
                                 variant="secondary"
                                 onClick={handleLogout}
                             >
-                                Logout
+                                Keluar
                             </Button>
                             <Button type="submit" className="grow">
                                 Simpan

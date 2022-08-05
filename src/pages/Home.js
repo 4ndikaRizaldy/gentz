@@ -146,7 +146,7 @@ const Home = () => {
                                             <div className="text-neutral-neutral05">
                                                 <div className="font-bold text-xl lg:text-4xl mb-4">
                                                     <h1 className="lg:leading-56px">
-                                                        Bulan Ramadhan <br />{" "}
+                                                        Bulan Agustus <br />{" "}
                                                         Banyak Diskon
                                                     </h1>
                                                 </div>
@@ -154,7 +154,7 @@ const Home = () => {
                                                     Diskon Hingga
                                                 </h1>
                                                 <h1 className="text-lg lg:text-3xl font-medium text-alert-danger">
-                                                    60%
+                                                    77%
                                                 </h1>
                                             </div>
                                             <div className="">

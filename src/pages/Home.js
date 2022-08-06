@@ -42,6 +42,7 @@ const ChevronRight = () => (
     </svg>
 )
 
+
 const categories = [
     { id: 0, name: "Semua" },
     { id: 1, name: "Hobi" },

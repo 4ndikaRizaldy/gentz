@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
-import { logout, updateProfile } from "../features/user/userSlice";
+import { updateProfile, changePassword } from "../features/user/userSlice";
 
 // prettier-ignore
 const SvgCamera = () => (
@@ -139,10 +139,12 @@ const Profile = () => {
             regions.find((region) => region.provinsi === e.target.value)
         );
     };
-    const handleLogout = () => {
-        dispatch(logout());
-        toast.error("Berhasil logout!");
-    };
+    
+
+    const handleChangePassword = () => {
+        dispatch(changePassword());
+        toast.error("Berhasil Ganti Password");
+    }
 
     return (
         <>
@@ -297,9 +299,9 @@ const Profile = () => {
                                 type="button"
                                 className="grow"
                                 variant="secondary"
-                                onClick={handleLogout}
+                                onClick={handleChangePassword}
                             >
-                                Keluar
+                                Ganti Password
                             </Button>
                             <Button type="submit" className="grow">
                                 Simpan

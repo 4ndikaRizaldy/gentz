@@ -87,6 +87,54 @@ export const register = createAsyncThunk(
     }
 );
 
+export const changePassword = createAsyncThunk(
+    "/api/v1/users/change-password/user_id",
+    async(payload, thunkAPI)=>{
+        const{id, accessToken} = thunkAPI.getState.user;
+        let url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/change-password/${id}`;
+        
+        try{
+            const resp = await axios.get(url, {
+                headers: {
+                    Authorization: "Bearer " + accessToken,
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+             // remove id from response
+             const data = resp.data.data;
+             // delete data.id;
+             let tempLocalstorage = JSON.parse(
+                localStorage.getItem("secondhand")
+            );
+            tempLocalstorage.oldPassword = data.oldPassword;
+            tempLocalstorage.newPassword = data.newPassword;
+            tempLocalstorage.retrypePassword = data.retrypePassword;
+
+            // if the user change their avatar
+            if (data.urlImage) tempLocalstorage.imageUrl = data.urlImage;
+
+            // keep access token and user information on local storage
+            localStorage.setItem(
+                "secondhand",
+                JSON.stringify(tempLocalstorage)
+            );
+
+            return data;
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            toast.dismiss();
+            toast.error(message);
+            console.log(error);
+            return thunkAPI.rejectWithValue();
+        }
+    }
+);
+
 export const updateProfile = createAsyncThunk(
     "/api/v1/users/profile-user",
     async (payload, thunkAPI) => {

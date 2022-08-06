@@ -12,6 +12,10 @@ import {
     readNotification,
 } from "../features/notification/notificationSlice";
 
+import { logout } from "../features/user/userSlice";
+
+import { toast } from "react-toastify";
+
 // prettier-ignore
 const Svglogoungu = ({className}) => (
     <svg className={className} width="100" height="34" viewBox="0 0 100 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,6 +75,12 @@ const SvgBell = ({className, onClick}) => (
     <svg onClick={onClick} className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+)
+// prettier-ignore
+const SvgOut = () => (
+    <svg  width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M96 480h64C177.7 480 192 465.7 192 448S177.7 416 160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64C177.7 96 192 81.67 192 64S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256C0 437 42.98 480 96 480zM504.8 238.5l-144.1-136c-6.975-6.578-17.2-8.375-26-4.594c-8.803 3.797-14.51 12.47-14.51 22.05l-.0918 72l-128-.001c-17.69 0-32.02 14.33-32.02 32v64c0 17.67 14.34 32 32.02 32l128 .001l.0918 71.1c0 9.578 5.707 18.25 14.51 22.05c8.803 3.781 19.03 1.984 26-4.594l144.1-136C514.4 264.4 514.4 247.6 504.8 238.5z"/>
     </svg>
 )
 
@@ -175,6 +185,11 @@ function Navbar({
     }, [location]);
     const handleReadNotification = (notifId) => {
         dispatch(readNotification({ notifId }));
+    };
+
+    const handleLogout = () => {
+        dispatch(logout());
+        toast.error("Berhasil logout!");
     };
 
     return (
@@ -414,8 +429,18 @@ function Navbar({
                                     <Link to="/profile">
                                         <SvgUser className="stroke-[#151515] hover:stroke-primary-darkblue04 transition" />
                                     </Link>
+                                    <Button 
+                                        type="link"
+                                        onClick={handleLogout}
+                                        className={'bg-transparent shadow-transparent px-0'}
+                                >
+                                    <SvgOut />
+                                    {/* <span className="ml-2 my-auto mx-auto"> Keluar  </span> */}
+                                    </Button>
+                                    
                                 </div>
                             ) : (
+                                
                                 /* ======== button masuk ======== */
                                 <Button
                                     type="button"

@@ -75,6 +75,7 @@ function App() {
                         </AuthRoute>
                     }
                 />
+            
                 <Route
                     path="/add_product"
                     element={

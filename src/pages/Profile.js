@@ -295,7 +295,7 @@ const Profile = () => {
                                     </span>
                                 )}
                         </fieldset>
-                        <div className="flex flex-row items-center mt-6 gap-6 pl-4 pr-2">
+                        <div className="flex flex-row items-center mt-6 gap-6 pl-2 pr-2">
                             <Link to="/change_password">
                                 <Button
                                     type="button"

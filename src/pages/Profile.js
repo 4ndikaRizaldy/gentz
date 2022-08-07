@@ -13,6 +13,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { updateProfile, changePassword } from "../features/user/userSlice";
 
+
 // prettier-ignore
 const SvgCamera = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -294,16 +295,17 @@ const Profile = () => {
                                     </span>
                                 )}
                         </fieldset>
-                        <div className="w-full mt-6 flex space-x-2">
-                            <Button
-                                type="button"
-                                className="grow"
-                                variant="secondary"
-                                onClick={handleChangePassword}
-                            >
-                                Ganti Password
-                            </Button>
-                            <Button type="submit" className="grow">
+                        <div className="flex flex-row items-center mt-6 gap-6 pl-4 pr-2">
+                            <Link to="/change_password">
+                                <Button
+                                    type="button"
+                                    className="w-64"
+                                    variant="secondary"
+                                >
+                                    Ganti Password
+                                </Button>
+                            </Link>
+                            <Button type="submit" className="w-64">
                                 Simpan
                             </Button>
                         </div>

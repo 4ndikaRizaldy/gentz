@@ -4,6 +4,7 @@ import Product from "./pages/Product";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import ChangePassword from "./pages/ChangePassword";
 import AddProduct from "./pages/AddProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +13,7 @@ import { useSelector } from "react-redux";
 import SaleListPage from "./pages/SaleListPage";
 import Notification from "./pages/Notification";
 import Preview from "./pages/Preview";
+
 
 function App() {
     const { isAuthenticated, address, phoneNumber } = useSelector(
@@ -60,6 +62,14 @@ function App() {
                     }
                 ></Route>
                 <Route
+                    path="/change_password"
+                    element={
+                        <ContentRoute>
+                            <ChangePassword />
+                        </ContentRoute>
+                    }
+                ></Route>
+                <Route
                     path="/register"
                     element={
                         <AuthRoute>
@@ -75,6 +85,7 @@ function App() {
                         </AuthRoute>
                     }
                 />
+                
             
                 <Route
                     path="/add_product"

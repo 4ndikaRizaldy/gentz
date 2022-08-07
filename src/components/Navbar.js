@@ -5,7 +5,6 @@ import { Navigate, useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "./Button";
-
 import queryString from "query-string";
 import {
     getNotification,
@@ -430,12 +429,10 @@ function Navbar({
                                         <SvgUser className="stroke-[#151515] hover:stroke-primary-darkblue04 transition" />
                                     </Link>
                                     <Button 
-                                        type="link"
                                         onClick={handleLogout}
-                                        className={'bg-transparent shadow-transparent px-0'}
+                                        className={'bg-transparent shadow-transparent px-0 '}
                                 >
-                                    <SvgOut />
-                                    {/* <span className="ml-2 my-auto mx-auto"> Keluar  </span> */}
+                                    <SvgOut className={'stroke-[#151515] focus:stroke-primary-darkblue04 transition '}/>
                                     </Button>
                                     
                                 </div>
@@ -496,6 +493,9 @@ function Navbar({
                                 <Link to="/profile" className="font-medium">
                                     Akun Saya
                                 </Link>
+                                <Button onClick={handleLogout}>
+                                    Keluar
+                                </Button>
                             </div>
                         ) : (
                             <Button

@@ -138,6 +138,16 @@ function App() {
                     }
                 ></Route>
                 <Route
+                    path="/logout"
+                    element={
+                        <ContentRoute>
+                            <ContentRouteProtected>
+                                <Login />
+                            </ContentRouteProtected>
+                        </ContentRoute>
+                    }
+                ></Route>
+                <Route
                     path="/preview"
                     element={
                         <ContentRoute>

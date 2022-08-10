@@ -14,6 +14,9 @@ const userState = JSON.parse(localStorage.getItem("secondhand"))
           address: { city: "", street: "" },
           phoneNumber: "",
           imageUrl: "",
+          oldPassword: "",
+          newPassword: "",
+          retrypePassword: "",
       };
 const isAuthenticated = JSON.parse(localStorage.getItem("secondhand"))
     ? true
@@ -90,25 +93,26 @@ export const register = createAsyncThunk(
 export const changePassword = createAsyncThunk(
     "/api/v1/users/change-password/user_id",
     async(payload, thunkAPI)=>{
-        const{id, accessToken} = thunkAPI.getState.user;
-        let url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/change-password/${id}`;
+        const{id, accessToken} = thunkAPI.getState().user;
+        const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/change-password/${id}`;
         
-        try{
-            const resp = await axios.get(url, {
+        try {
+            const resp = await axios.put(url, payload, {
                 headers: {
                     Authorization: "Bearer " + accessToken,
                     "Content-Type": "multipart/form-data",
                 },
             });
              // remove id from response
-             const data = resp.data.data;
-             // delete data.id;
+             const data = resp.data;
              let tempLocalstorage = JSON.parse(
                 localStorage.getItem("secondhand")
             );
             tempLocalstorage.oldPassword = data.oldPassword;
+
             tempLocalstorage.newPassword = data.newPassword;
             tempLocalstorage.retrypePassword = data.retrypePassword;
+            
 
             // if the user change their avatar
             if (data.urlImage) tempLocalstorage.imageUrl = data.urlImage;
@@ -246,6 +250,14 @@ const userSlice = createSlice({
             if (payload.urlImage) state.imageUrl = payload.urlImage;
         },
         [updateProfile.rejected]: (state, action) => {},
+        [changePassword.pending]:(state) => {},
+        [changePassword.fulfilled]:(state, {payload}) =>{
+            state.id = payload;
+            state.oldPassword = payload.oldPassword;
+            state.newPassword = payload.newPassword;
+            state.retrypePassword = payload.retrypePassword;
+        },
+        [changePassword.rejected]:(state, action) =>{},
     },
 });
 

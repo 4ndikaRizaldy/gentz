@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
-import { updateProfile, changePassword } from "../features/user/userSlice";
+import { updateProfile } from "../features/user/userSlice";
 
 
 // prettier-ignore
@@ -140,12 +140,6 @@ const Profile = () => {
             regions.find((region) => region.provinsi === e.target.value)
         );
     };
-    
-
-    const handleChangePassword = () => {
-        dispatch(changePassword());
-        toast.error("Berhasil Ganti Password");
-    }
 
     return (
         <>

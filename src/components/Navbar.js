@@ -493,7 +493,8 @@ function Navbar({
                                 <Link to="/profile" className="font-medium">
                                     Akun Saya
                                 </Link>
-                                <Button onClick={handleLogout}>
+                                <Button onClick={handleLogout}
+                                >
                                     Keluar
                                 </Button>
                             </div>

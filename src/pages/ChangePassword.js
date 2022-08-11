@@ -14,6 +14,8 @@ import Form from 'react-bootstrap/Form';
 
 const ChangePassword = () => {
     document.title = "Password Page";
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const{  oldPassword, newPassword, retrypePassword } = useSelector(
         (state) => state.user
     );
@@ -23,8 +25,6 @@ const ChangePassword = () => {
         newPassword: newPassword ? newPassword: "",
         retrypePassword:retrypePassword ?  retrypePassword: "",
     };
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const validationSchema = () => {
     const validationObject = {
@@ -48,7 +48,7 @@ const ChangePassword = () => {
                 .then(() => {
                     toast.dismiss();
                     toast.success("Berhasil mengganti password!");
-                    navigate("/list");
+                    navigate("/");
                 });
             },
         });
@@ -86,6 +86,7 @@ const ChangePassword = () => {
                             <Input
                                 name="oldPassword"
                                 type="text"
+                                id = "password"
                                 placeholder="Masukkan password lama"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -121,7 +122,7 @@ const ChangePassword = () => {
                             </label>
                             <Input
                                 name="retrypePassword"
-                                type="password"
+                                type="text"
                                 placeholder="Masukkan ulang password baru"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
